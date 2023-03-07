@@ -15,7 +15,7 @@ rm(tmp)
 # 1 Remove geospatial packages and their dependencies ----
 
 # List of geospatial packages that will be installed
-geo_pkgs <- c("leaflet", "raster", "sp", "terra", "sf")
+geo_pkgs <- c("leaflet", "rgdal", "raster", "sp", "terra", "sf")
 
 # List of geospatial package dependencies
 geo_deps <- unique(
