@@ -3,8 +3,12 @@
     "Version": "4.1.2",
     "Repositories": [
       {
-        "Name": "CRAN",
-        "URL": "https://packagemanager.rstudio.com/all/latest"
+        "Name": "binaries",
+        "URL": "https://ppm.publichealthscotland.org/all-r/latest"
+      },
+      {
+        "Name": "source",
+        "URL": "https://ppm.publichealthscotland.org/all-r/latest"
       }
     ]
   },
@@ -27,10 +31,10 @@
     },
     "MASS": {
       "Package": "MASS",
-      "Version": "7.3-58.2",
+      "Version": "7.3-58.3",
       "Source": "Repository",
       "Repository": "RSPM",
-      "Hash": "e02d1a0f6122fd3e634b25b433704344",
+      "Hash": "9586b552d57f5516fe4d25398c1bacd6",
       "Requirements": []
     },
     "Matrix": {
@@ -382,10 +386,10 @@
     },
     "leaflet": {
       "Package": "leaflet",
-      "Version": "2.1.1",
+      "Version": "2.1.2",
       "Source": "Repository",
       "Repository": "RSPM",
-      "Hash": "97fadb60ef6eb8524b9f6e2c4a69ee93",
+      "Hash": "ac2c7f21c2a6d2579eed8aaae4c42610",
       "Requirements": [
         "RColorBrewer",
         "base64enc",
@@ -578,10 +582,10 @@
     },
     "rlang": {
       "Package": "rlang",
-      "Version": "1.0.6",
+      "Version": "1.1.0",
       "Source": "Repository",
       "Repository": "RSPM",
-      "Hash": "4ed1f8336c8d52c3e750adcdc57228a7",
+      "Hash": "dc079ccd156cde8647360f473c1fa718",
       "Requirements": []
     },
     "rmarkdown": {
@@ -647,10 +651,10 @@
     },
     "sf": {
       "Package": "sf",
-      "Version": "1.0-9",
+      "Version": "1.0-10",
       "Source": "Repository",
       "Repository": "RSPM",
-      "Hash": "8a348490fefb623e7935f405230900a7",
+      "Hash": "63879bf5f4900e021a660a48716278fc",
       "Requirements": [
         "DBI",
         "Rcpp",
@@ -696,20 +700,20 @@
     },
     "terra": {
       "Package": "terra",
-      "Version": "1.7-3",
+      "Version": "1.7-18",
       "Source": "Repository",
       "Repository": "RSPM",
-      "Hash": "230c4bfbb6aae92d92ef9762b683541e",
+      "Hash": "5db3d690ad42a1828d3bf9e063c98587",
       "Requirements": [
         "Rcpp"
       ]
     },
     "tibble": {
       "Package": "tibble",
-      "Version": "3.1.8",
+      "Version": "3.2.0",
       "Source": "Repository",
       "Repository": "RSPM",
-      "Hash": "56b6934ef0f8c68225949a8672fe1a8f",
+      "Hash": "37695ff125982007d42a59ad10982ff2",
       "Requirements": [
         "fansi",
         "lifecycle",

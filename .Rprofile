@@ -1,4 +1,4 @@
-# 1 Enable renv environment ----
+# 1 Activate {renv} ----
 
 source("renv/activate.R")
 
@@ -11,8 +11,8 @@ source("renv/activate.R")
 
 # 2 Define repos to install packages from ----
 
-options(repos = c(binaries = "https://packagemanager.rstudio.com/all/__linux__/centos7/latest",
-                  source = "https://packagemanager.rstudio.com/cran/latest"))
+options(repos = c(binaries = "https://ppm.publichealthscotland.org/all-r/__linux__/centos7/latest",
+                  source = "https://ppm.publichealthscotland.org/all-r/latest"))
 
 # 3 Set environment variables to point to installations of geospatial libraries ----
 
