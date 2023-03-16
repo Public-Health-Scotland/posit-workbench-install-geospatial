@@ -4,14 +4,6 @@
 #
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-# 0 Create flag for whether 'renv' is enabled or not ----
-renv_enabled = FALSE
-capture.output(tmp <- renv::status()$lockfile, file = "/dev/null")
-if(length(tmp) > 0){
-  renv_enabled = TRUE
-}
-rm(tmp)
-
 # 1 Remove geospatial packages and their dependencies ----
 
 # List of geospatial packages that will be installed
@@ -26,11 +18,6 @@ geo_deps <- unique(
 pkgs_to_remove <- unique(unlist(c(geo_pkgs, geo_deps)))
 remove.packages(pkgs_to_remove)
 
-# If 'renv' is enabled, purge the cache
-if(renv_enabled == TRUE){
-  lapply(pkgs_to_remove, renv::purge, prompt = FALSE)
-}
-
 # 2 Install the 'parallelly' package and identify number of CPUs available ----
 
 # The parallelly package allows the number of CPUs available to a Posit
@@ -39,21 +26,8 @@ if(renv_enabled == TRUE){
 # Remove 'parallelly' if it is already installed
 remove.packages("parallelly")
 
-# If 'renv' is enabled, purge the cache
-if(renv_enabled == TRUE){
-  renv::purge("parallelly", prompt = FALSE)
-}
-
 # Install the 'parallelly' package
 install.packages("parallelly", repos = getOption("repos")[["binaries"]])
-
-# If 'renv' is enabled, update the lockfile
-if(renv_enabled == TRUE){
-  renv::snapshot(repos = getOption("repos")[["binaries"]],
-                 packages = c("parallelly"),
-                 update = TRUE,
-                 prompt = FALSE)
-}
 
 # Identify number of CPUs available
 ncpus <- as.numeric(parallelly::availableCores())
@@ -67,14 +41,6 @@ geo_deps_bin <- sort(setdiff(geo_deps, geo_pkgs))
 install.packages(pkgs = geo_deps_bin,
                  repos = getOption("repos")[["binaries"]],
                  Ncpus = ncpus)
-
-# If 'renv' is enabled, update the lockfile
-if(renv_enabled == TRUE){
-  renv::snapshot(repos = getOption("repos")[["binaries"]],
-                 packages = geo_deps_bin,
-                 update = TRUE,
-                 prompt = FALSE)
-}
 
 # 4 Install geospatial packages from source ----
 
@@ -91,14 +57,6 @@ install.packages("sf",
                  repos = getOption("repos")[["source"]],
                  Ncpus = ncpus)
 
-# If 'renv' is enabled, update the lockfile
-if(renv_enabled == TRUE){
-  renv::snapshot(repos = getOption("repos")[["source"]],
-                 packages = c("sf"),
-                 update = TRUE,
-                 prompt = FALSE)
-}
-
 ## 4.2 Install the 'terra' package ----
 
 install.packages("terra",
@@ -107,14 +65,6 @@ install.packages("terra",
                  repos = getOption("repos")[["source"]],
                  Ncpus = ncpus)
 
-# If 'renv' is enabled, update the lockfile
-if(renv_enabled == TRUE){
-  renv::snapshot(repos = getOption("repos")[["source"]],
-                 packages = c("terra"),
-                 update = TRUE,
-                 prompt = FALSE)
-}
-
 ## 4.3 Install the 'sp' package ----
 
 install.packages("sp",
@@ -122,14 +72,6 @@ install.packages("sp",
                  INSTALL_opts = "--no-test-load",
                  repos = getOption("repos")[["source"]],
                  Ncpus = ncpus)
-
-# If 'renv' is enabled, update the lockfile
-if(renv_enabled == TRUE){
-  renv::snapshot(repos = getOption("repos")[["source"]],
-                 packages = c("sp"),
-                 update = TRUE,
-                 prompt = FALSE)
-}
 
 ## 4.4 Install the 'raster' package ----
 
@@ -140,14 +82,6 @@ install.packages("https://packagemanager.rstudio.com/cran/latest/src/contrib/Arc
                  INSTALL_opts = "--no-test-load",
                  Ncpus = ncpus)
 
-# If 'renv' is enabled, update the lockfile
-if(renv_enabled == TRUE){
-  renv::snapshot(repos = getOption("repos")[["source"]],
-                 packages = c("raster"),
-                 update = TRUE,
-                 prompt = FALSE)
-}
-
 ## 4.5 Install the 'rgdal' package ----
 
 install.packages("https://packagemanager.rstudio.com/cran/latest/src/contrib/Archive/rgdal/rgdal_1.5-25.tar.gz",
@@ -157,27 +91,11 @@ install.packages("https://packagemanager.rstudio.com/cran/latest/src/contrib/Arc
                  INSTALL_opts = "--no-test-load",
                  Ncpus = ncpus)
 
-# If 'renv' is enabled, update the lockfile
-if(renv_enabled == TRUE){
-  renv::snapshot(repos = getOption("repos")[["source"]],
-                 packages = c("rgdal"),
-                 update = TRUE,
-                 prompt = FALSE)
-}
-
 ## 4.6 Install the 'leaflet' package ----
 
 install.packages("leaflet",
                  repos = getOption("repos")[["binaries"]],
                  Ncpus = ncpus)
-
-# If 'renv' is enabled, update the lockfile
-if(renv_enabled == TRUE){
-  renv::snapshot(repos = getOption("repos")[["binaries"]],
-                 packages = c("leaflet"),
-                 update = TRUE,
-                 prompt = FALSE)
-}
 
 # 5 Load geospatial libraries ----
 
