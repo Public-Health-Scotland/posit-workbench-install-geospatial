@@ -37,6 +37,9 @@ ncpus <- as.numeric(parallelly::availableCores())
 # Get list of geospatial package dependencies that can be installed as binaries
 geo_deps_bin <- sort(setdiff(geo_deps, geo_pkgs))
 
+# Remove packages that are already installed from the list of geospatial package dependencies
+geo_deps_bin <- sort(setdiff(geo_deps_bin, as.data.frame(installed.packages())$Package))
+
 # Install these as binaries
 install.packages(pkgs = geo_deps_bin,
                  repos = getOption("repos")[["binaries"]],
