@@ -47,7 +47,7 @@ install.packages(pkgs = geo_deps_bin,
 geo_config_args <- c("--with-gdal-config=/usr/gdal34/bin/gdal-config",
                      "--with-proj-include=/usr/proj81/include",
                      "--with-proj-lib=/usr/proj81/lib",
-                     "--with-geos-config=/usr/geos311/bin/geos-config")
+                     "--with-geos-config=/usr/geos310/bin/geos-config")
 
 ## 4.1 Install the 'sf' package ----
 
@@ -100,7 +100,7 @@ install.packages("leaflet",
 # 5 Load geospatial libraries ----
 
 dyn.load("/usr/gdal34/lib/libgdal.so")
-dyn.load("/usr/geos311/lib64/libgeos_c.so", local = FALSE)
+dyn.load("/usr/geos310/lib64/libgeos_c.so", local = FALSE)
 library(sf)
 library(terra)
 library(sp)
